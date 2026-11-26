@@ -4,15 +4,15 @@
   "type": "module",
   "description": "Drive your real, logged-in Chrome or Edge through the WorkBuddy browser extension: click, type, scroll, screenshot and read pages that a plain HTTP fetch cannot reach.",
   "author": {
-    "name": "senyou"
+    "name": "yousen"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/senyou/dsh-workbuddy-browser.git"
+    "url": "git+https://github.com/github-yousen/dsh-workbuddy-browser.git"
   },
-  "homepage": "https://github.com/senyou/dsh-workbuddy-browser#readme",
+  "homepage": "https://github.com/github-yousen/dsh-workbuddy-browser#readme",
   "bugs": {
-    "url": "https://github.com/senyou/dsh-workbuddy-browser/issues"
+    "url": "https://github.com/github-yousen/dsh-workbuddy-browser/issues"
   },
   "exports": {
     "./workbuddy": "./workbuddy/index.js",
