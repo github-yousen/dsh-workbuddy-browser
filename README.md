@@ -26,22 +26,21 @@ Store pages, if the button opens one instead of installing directly:
 ## Install
 
 ```sh
-dsh plugin --profile web add dsh-workbuddy-browser
+dsh plugin --profile web add https://github.com/github-yousen/dsh-workbuddy-browser/releases/download/v1.2.0/dsh-workbuddy-browser-1.2.0.tgz
 ```
 
-Or install it from the DSH plugin market / Plugin Manager, which runs the same
-command. Restart the session afterwards so the bundle's patch layer is composed.
+Or install straight from source:
+
+```sh
+dsh plugin --profile web add github:github-yousen/dsh-workbuddy-browser
+```
+
+Restart the session afterwards so the bundle's patch layer is composed. The
+bundle is also listed in the DSH plugin market, which runs the same command.
 
 Windows only: `dsh.bundle.platforms` is `["win32"]`, because the extension
 reaches `browser-mcp.exe` through Windows Native Messaging registry keys. DSH
 reports `unsupported-platform` instead of installing on other systems.
-
-Installing from a local checkout also works — point `add` at the directory — and
-is how this bundle was verified before publishing:
-
-```sh
-dsh plugin --profile web add /path/to/dsh-workbuddy-browser
-```
 
 ## What a fresh install gives you
 
