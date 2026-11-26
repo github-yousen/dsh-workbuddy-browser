@@ -3,8 +3,11 @@
 # browser-mcp.exe ships with WorkBuddy and speaks MCP over stdio. It does not
 # drive a browser directly: it connects to the WorkBuddy browser extension
 # (Native Messaging host `com.workbuddy.extension`) and drives the tabs you
-# already have open in your own Chrome / Edge / QQ Browser, with your real
-# login state.
+# already have open in your own Chrome or Edge, with your real login state.
+#
+# WorkBuddy also advertises QQ Browser, but on win32 its native-host installer
+# registers only the Chrome, Edge and Chromium registry keys, so QQ Browser is
+# not claimed as supported here. Chrome and Edge are what was actually driven.
 #
 # Prerequisites, all outside DSH:
 #   1. WorkBuddy is installed and running.

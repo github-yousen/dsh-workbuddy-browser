@@ -6,7 +6,7 @@ This plugin does not launch a browser. It drives the Chrome / Edge you are **alr
 
 1. **Install and run WorkBuddy.** WorkBuddy ships both the extension and the local relay; DSH only calls into it.
 2. **Open WorkBuddy → Settings → Agent → Browser control.** That section is titled "Browser control" and carries a Beta tag.
-3. **Press "Install" beside the browser you want to drive, then keep the extension enabled.** The button reads "Installed" once detected. Chrome, Edge and QQ Browser are listed separately.
+3. **Press "Install" beside the browser you want to drive, then keep the extension enabled.** The button reads "Installed" once detected. WorkBuddy lists Chrome, Edge and QQ Browser separately, but QQ Browser is unverified on Windows — this plugin only claims Chrome and Edge.
    If the button opens a store page instead of installing, come back and refresh once the install finishes, and confirm the state reads "Installed".
 4. **Leave at least one tab open in that browser.** With no page open there is no connection to attach to, and the browser list comes back empty.
 5. **Re-enable this plugin in DSH.** Activation probes for `browser-mcp.exe` and for the extension's Native Messaging host, so re-enabling after changing the WorkBuddy install location or upgrading it re-runs that detection.
