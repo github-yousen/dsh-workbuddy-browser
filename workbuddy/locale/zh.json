@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "WorkBuddy 浏览器",
+    "description": "用 WorkBuddy 扩展操控你已登录的 Chrome、Edge 标签页：点击、填表、滚动、截图、读动态内容。需要真实登录态或真实交互时用。前提：WorkBuddy 在运行、目标浏览器已装并启用 WorkBuddy 扩展、至少开着一个标签页；安装入口在 WorkBuddy 的「设置 › 智能体 › 浏览器操控」，完整步骤见详细介绍页。工具名 mcp__workbuddy__*，先调 browsers_list。注意：tabs_finalize 与 tabs_close 都会关标签页，不要用 tabs_finalize 收尾；tabs_claim 接管的你自己的标签页绝不能传给它。"
+  }
+}

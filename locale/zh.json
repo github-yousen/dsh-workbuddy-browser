@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "WorkBuddy 浏览器",
+    "description": "用 WorkBuddy 浏览器扩展操控你自己已登录的 Chrome、Edge 标签页：点击按钮和链接、填写表单、滚动翻页、截图、读取动态渲染的内容，以及走完多步骤网页流程。需要真实登录态或真实交互、而单纯抓取网页文本不够时用它。前提是 WorkBuddy 正在运行、目标浏览器已安装并启用了 WorkBuddy 扩展、且至少开着一个标签页——安装入口在 WorkBuddy 的「设置 › 智能体 › 浏览器操控」，每个浏览器旁边的「前往安装」，完整步骤见详细介绍页。工具名为 mcp__workbuddy__*，先调 mcp__workbuddy__browsers_list 拿 browser_id。工具不出现说明 WorkBuddy 或扩展没连上；工具正常但浏览器列表为空，说明扩展没装、没启用，或没有打开的标签页。代价与风险：会作用在你真实的登录态上，tabs_finalize 和 tabs_close 都会关闭标签页，其中 tabs_finalize 即使在部分浏览器上标为 handoff 也仍然关闭，所以不要用它收尾；想保留页面就什么都不做，只对自己用 tabs_new 新建的标签页调 tabs_close；用 tabs_claim 接管的你自己的标签页绝不能传给 tabs_finalize。iWiki 这类重型单页应用有时返回空的可见 DOM 快照，此时改用 tab_screenshot 配合坐标操作。关闭本插件后这些工具消失，harness 其他功能不受影响。"
+  }
+}

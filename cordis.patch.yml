@@ -1,0 +1,75 @@
+# dsh-workbuddy-browser — WorkBuddy Browser Use as an MCP server for DSH
+#
+# browser-mcp.exe ships with WorkBuddy and speaks MCP over stdio. It does not
+# drive a browser directly: it connects to the WorkBuddy browser extension
+# (Native Messaging host `com.workbuddy.extension`) and drives the tabs you
+# already have open in your own Chrome / Edge / QQ Browser, with your real
+# login state.
+#
+# Prerequisites, all outside DSH:
+#   1. WorkBuddy is installed and running.
+#   2. The WorkBuddy browser extension is installed and enabled in the browser
+#      you want to drive: WorkBuddy > Settings > Agent > Browser control >
+#      "Install" (前往安装) beside that browser.
+#   3. At least one browser tab is open.
+#
+# The tools register as mcp__workbuddy__*. Start every browser task with
+# mcp__workbuddy__browsers_list, then use the returned browser_id.
+#
+# `command` and `env.BROWSER_NATIVE_HOST_NAME` below are the string `auto` on
+# purpose: `workbuddy/index.js` rewrites them at activation from the current
+# user profile, so this bundle is not pinned to one account name or one
+# WorkBuddy build. It looks for browser-mcp.exe under
+# %USERPROFILE%\.workbuddy\native-runtimes\browser-use\browser-use\bin\ first,
+# then the plugin cache copy, and picks the Native Messaging host name that
+# actually exists in %USERPROFILE%\.workbuddy\browser-runtime\native-host\
+# (com.workbuddy.extension for the domestic build, com.workbuddy_ai.extension
+# for the international one). Set either value to an absolute path or an exact
+# host name to override the detection.
+#
+# failOnStartupError is true on purpose. With false, a missing WorkBuddy or a
+# missing browser-mcp.exe only produced a log warning and the tools silently
+# never appeared, so the user saw "the agent has no browser tools" with no
+# in-product reason. With true, the failed activation surfaces its diagnostic on
+# this row in Plugin Manager, and `workbuddy/index.js` makes that diagnostic name
+# the exact click path to install the extension. The rest of the harness still
+# starts: app-boot permits an optional MCP entry to fail without aborting.
+#
+# Note what this does and does not catch: a working browser-mcp.exe with no
+# extension attached starts fine and reports an empty browsers_list, so
+# "extension not installed" is a runtime symptom, not an activation failure.
+# The row description says so, and the skill's error table sends the user to
+# the same settings page.
+#
+# toolCallTimeoutMs is 150000, deliberately above the 120000 ms deadline
+# browser-mcp.exe applies to its own provider calls. At 120000 the two deadlines
+# raced, so the same stall could surface either as the exe's structured
+# `provider invocation timed out` / code "unavailable" / retryable true, or as
+# DSH's opaque `tool call timed out after 120000ms`. The longer budget lets the
+# exe answer first with the error that carries a retry hint.
+# The row names this bundle's own subpath rather than
+# `@deepseek-ai/dsh-mcp-client` directly, because Plugin Manager resolves a
+# row's title, description and icon from the *module specifier* in the patch,
+# not from the bundle. Naming the shipped client directly showed a generic
+# "MCP client" row with generic artwork. `workbuddy/index.js` re-exports the
+# client's own apply/Config/inject, so behaviour is unchanged and only the
+# displayed identity differs — plus it resolves the two machine-specific
+# transport fields below before delegating.
+#
+# The specifier must be this package's real published name. It previously read
+# `@local/dsh-workbuddy-browser/workbuddy`, which only resolves on the machine
+# whose profile `link:`ed that scope: installing the published tarball into a
+# clean profile left the row failing at import with ERR_MODULE_NOT_FOUND.
+- insert:
+    - id: workbuddy-browser-mcp
+      name: 'dsh-workbuddy-browser/workbuddy'
+      config:
+        serverName: workbuddy
+        transport: stdio
+        command: auto
+        args: []
+        env:
+          BROWSER_NATIVE_HOST_NAME: auto
+        toolCallTimeoutMs: 150000
+        startupTimeoutMs: 60000
+        failOnStartupError: true

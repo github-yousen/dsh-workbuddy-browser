@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "WorkBuddy browser",
+    "description": "Drives your logged-in Chrome or Edge tabs through the WorkBuddy extension: click, fill forms, scroll, screenshot, read dynamically rendered content. Use it when a page needs real login state or real interaction. Requires WorkBuddy running, the WorkBuddy extension installed and enabled in that browser, and at least one open tab; the install entry point is WorkBuddy's Settings › Agent › Browser control, with the numbered steps on the bundle's detail page. Tools are named mcp__workbuddy__*; call browsers_list first. Note that both tabs_finalize and tabs_close close tabs — never use tabs_finalize to tidy up, and never pass it a tab you took over with tabs_claim."
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "name": "dsh-workbuddy-browser",
+  "version": "1.2.0",
+  "type": "module",
+  "description": "Drive your real, logged-in Chrome or Edge through the WorkBuddy browser extension: click, type, scroll, screenshot and read pages that a plain HTTP fetch cannot reach.",
+  "author": {
+    "name": "senyou"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/senyou/dsh-workbuddy-browser.git"
+  },
+  "homepage": "https://github.com/senyou/dsh-workbuddy-browser#readme",
+  "bugs": {
+    "url": "https://github.com/senyou/dsh-workbuddy-browser/issues"
+  },
+  "exports": {
+    "./workbuddy": "./workbuddy/index.js",
+    "./workbuddy/locale/*.json": "./workbuddy/locale/*.json",
+    "./workbuddy/icon": "./workbuddy/icon.svg",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "cordis.patch.yml",
+    "workbuddy/index.js",
+    "workbuddy/resolve.js",
+    "workbuddy/skill.js",
+    "workbuddy/locale/*.json",
+    "workbuddy/icon.svg",
+    "locale/*.json",
+    "docs",
+    "icon.svg",
+    "assets/icon-180.png",
+    "skills",
+    "README.md",
+    "LICENSE"
+  ],
+  "peerDependencies": {
+    "@deepseek-ai/dsh-mcp-client": "^0.1.0-rc.1 || ^0.2.0-rc.1 || ^0.2.2-rc.1"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/dsh-mcp-client": {
+      "optional": true
+    }
+  },
+  "engines": {
+    "dsh": "^0.1.0-rc.1 || ^0.2.0-rc.1 || ^0.2.2-rc.1"
+  },
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "dsh-bundle",
+    "mcp",
+    "browser",
+    "browser-use",
+    "browser-automation",
+    "chrome",
+    "edge",
+    "workbuddy"
+  ],
+  "license": "MIT",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml",
+      "platforms": [
+        "win32"
+      ]
+    }
+  }
+}
